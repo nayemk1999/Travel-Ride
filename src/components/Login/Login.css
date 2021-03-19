@@ -1,0 +1,23 @@
+.login-form input {
+    display: inline-block;
+    width: 250px;
+    padding: 10px
+}
+
+.login-form {
+    margin-left: 300px;
+    padding: 30px;
+    border: 1px solid red;
+    width: 500px;
+    text-align: center;
+}
+
+.login-form span {
+    color: red;
+}
+
+.login-form label {
+    display: block;
+    font-size: 20px;
+    font-weight: 500;
+}
