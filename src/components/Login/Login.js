@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import './Login.css'
@@ -20,7 +20,9 @@ const Login = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [signIn, setSignIn] = useState({})
 
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, errors, handleSubmit, watch } = useForm({});
+    const password = useRef({});
+    password.current = watch("password", "");
 
     const [login, setLogin] = useState(false);
     const [newUser, setNewUser] = useState({});
@@ -119,13 +121,31 @@ const Login = () => {
                     <input name="email" id="email" ref={register({ required: true })} placeholder="Enter Your Username or email" /><br />
                     {errors.email && <span>This field is required</span>}
 
-                    <label htmlFor="password">Password</label>
-                    <input name="password" id="password" ref={register({ required: true })} placeholder="Enter Your Username or email" /><br />
-                    {errors.password && <span>This field is required</span>}
+                    <label>Password</label>
+                    <input
+                        name="password"
+                        type="password"
+                        ref={register({
+                            required: "You must specify a password",
+                            minLength: {
+                                value: 6,
+                                message: "Password must have at least 8 characters"
+                            }
+                        })}
+                    />
+                    {errors.password && <p>{errors.password.message}</p>}
 
-                    <label htmlFor="password2">Confirm Password</label>
-                    <input name="password2" id="password2" ref={register({ required: true })} placeholder="Enter Your Username or email" /> <br />
-                    {errors.password2 && <span>This field is required</span>}
+                    <label>Repeat password</label>
+                    <input
+                        name="password_repeat"
+                        type="password"
+                        ref={register({
+                            validate: value =>
+                                value === password.current || "The passwords do not match"
+                        })}
+                    />
+                    {errors.password_repeat && <p>{errors.password_repeat.message}</p>}
+
                     <br />
                     <input type="submit" value="Create an account" />
                 </form>
@@ -151,7 +171,7 @@ const Login = () => {
             {!login ? <button className="btn btn-warning" onClick={() => setLogin(!login)}>Login</button> : <button className="btn btn-warning" onClick={() => setLogin(!login)}>Create an Account</button>}
             <p>-------------Or--------------</p>
             <button onClick={googleSignIn} className="btn btn-warning">Continue With Google</button>
-            <button onClick ={githubSignIn} className="btn btn-warning">Continue With GitHub</button>
+            <button onClick={githubSignIn} className="btn btn-warning">Continue With GitHub</button>
         </div>
     );
 };

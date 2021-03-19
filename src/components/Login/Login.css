@@ -12,8 +12,9 @@
     text-align: center;
 }
 
-.login-form span {
-    color: red;
+.login-form span,
+p {
+    color: #bf1650;
 }
 
 .login-form label {
