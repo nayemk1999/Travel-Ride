@@ -27,7 +27,6 @@ const Login = () => {
 
     const onSubmit = data => {
         if (login) {
-            
             firebase.auth().signInWithEmailAndPassword(data.email, data.password)
                 .then(res => {
                     const user = res.user
@@ -35,6 +34,7 @@ const Login = () => {
                         name: user.displayName,
                         email: user.email
                     }
+                    
                     setLoggedInUser(newUserInfo)
                     setNewUser(newUserInfo)
                     history.replace(from);
@@ -56,6 +56,7 @@ const Login = () => {
                         email: user.email
                     }
                     setLoggedInUser(newUserInfo)
+                    updateProfile(newUserInfo.name)
                     history.replace(from);
 
                 })
@@ -88,7 +89,16 @@ const Login = () => {
                 console.log(errorCode, errorMessage);
             });
     }
-
+    const updateProfile = name => {
+        const user = firebase.auth().currentUser;
+        user.updateProfile({
+            displayName: name,
+        }).then(res => {
+            console.log(user.displayName);
+        }).catch(function (error) {
+            // An error happened.
+        });
+    }
     return (
         <div className='text-center'>
             { !login &&
