@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <div className="container home row">
             {
-                FakeData.map(rider => <RidersName rider ={rider}></RidersName>)
+                FakeData.map(rider => <RidersName rider ={rider} key ={rider.id}></RidersName>)
             }   
         </div>
     );

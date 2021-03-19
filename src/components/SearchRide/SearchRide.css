@@ -1,0 +1,31 @@
+.search-ride {
+    border: 1px solid red;
+    padding: 20px;
+}
+
+.search-ride input {
+    display: block
+}
+
+.search-ride button {
+    background-color: rgb(252, 146, 33);
+    color: beige;
+    padding: 10px 20px;
+    margin: 10px;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.search-result {
+    background-color: tomato;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.search-result h3 {
+    margin-left: 5px;
+    margin-top: 5px;
+}

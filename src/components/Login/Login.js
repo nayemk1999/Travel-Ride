@@ -1,16 +1,24 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import './Login.css'
 import firebase from "firebase/app";
 import "firebase/auth";
 import { firebaseConfig } from './firebase.config';
+import { UserContext } from '../../App';
 
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 }
 
 const Login = () => {
+    let history = useHistory();
+    let location = useLocation();
+
+    let { from } = location.state || { from: { pathname: "/" } };
+
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [signIn, setSignIn] = useState({})
 
     const { register, handleSubmit, watch, errors } = useForm();
     const onSubmit = data => {
@@ -21,7 +29,6 @@ const Login = () => {
             .catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                // ..
             });
     };
 
@@ -29,14 +36,20 @@ const Login = () => {
     const googleSignIn = () => {
         firebase.auth()
             .signInWithPopup(gProvider)
-            .then((result) => {
-                var user = result.user;
-                console.log(user);
+            .then(res => {
+                const user = res.user;
+                const newUserInfo = {
+                    name: user.displayName,
+                    email: user.email
+                }
+                setLoggedInUser(newUserInfo)
+                setSignIn(newUserInfo);
+                history.replace(from);
+
             }).catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                var email = error.email;
-                var credential = error.credential;
+               console.log(errorCode, errorMessage);
             });
     }
     const [login, setLogin] = useState(false);
