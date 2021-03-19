@@ -17,12 +17,10 @@ export const UserContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
-  console.log(loggedInUser);
   return (
     <UserContext.Provider value = {[loggedInUser, setLoggedInUser]}>
       <Router>
         <Header />
-        <h3>Name: {loggedInUser.name}</h3>
         <Switch>
           <Route path="/home">
             <Home />
