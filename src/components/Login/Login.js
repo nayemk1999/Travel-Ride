@@ -21,15 +21,50 @@ const Login = () => {
     const [signIn, setSignIn] = useState({})
 
     const { register, handleSubmit, watch, errors } = useForm();
+
+    const [login, setLogin] = useState(false);
+    const [newUser, setNewUser] = useState({});
+
     const onSubmit = data => {
-        firebase.auth().createUserWithEmailAndPassword(data.email, data.password)
-            .then(res => {
-                const { email } = res.user
-            })
-            .catch((error) => {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-            });
+        if (login) {
+            firebase.auth().signInWithEmailAndPassword(data.email, data.password)
+                .then(res => {
+                    const user = res.user
+                    const newUserInfo = {
+                        name: user.displayName,
+                        email: user.email
+                    }
+                    setLoggedInUser(newUserInfo)
+                    setNewUser(newUserInfo)
+                    history.replace(from);
+                    // console.log(newUserInfo);
+
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log(errorCode, errorMessage);
+                });
+        }
+        if (data.email && data.password && data.name) {
+            firebase.auth().createUserWithEmailAndPassword(data.email, data.password)
+                .then(res => {
+                    const user = res.user
+                    const newUserInfo = {
+                        name: data.name,
+                        email: user.email
+                    }
+                    setLoggedInUser(newUserInfo)
+                    history.replace(from);
+
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log(errorCode, errorMessage);
+                });
+        }
+
     };
 
     const gProvider = new firebase.auth.GoogleAuthProvider();
@@ -49,10 +84,9 @@ const Login = () => {
             }).catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
-               console.log(errorCode, errorMessage);
+                console.log(errorCode, errorMessage);
             });
     }
-    const [login, setLogin] = useState(false);
 
     return (
         <div className='text-center'>

@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { useParams } from 'react-router';
+import { UserContext } from '../../App';
 import Map from '../../fakeData/images/Map.png'
 import './SearchRide.css'
 
 const SearchRide = () => {
     const [search, setSearch] = useState(false)
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+    const {id} = useParams();
+    console.log(id);
     return (
         <div className="container row">
             <div className="col">
+                <p>Id Number: {id}</p>
                 {
                     !search ? <div className='search-ride'>
                         <label>Pick From</label>
