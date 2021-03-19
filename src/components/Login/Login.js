@@ -27,6 +27,7 @@ const Login = () => {
 
     const onSubmit = data => {
         if (login) {
+            
             firebase.auth().signInWithEmailAndPassword(data.email, data.password)
                 .then(res => {
                     const user = res.user

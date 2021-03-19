@@ -1,10 +1,35 @@
+.rideContain {
+    margin: 0 auto;
+}
+
+.map img {
+    height: 500px
+}
+
 .search-ride {
-    border: 1px solid red;
-    padding: 20px;
+    border: 1px solid grey;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px gray;
+    background-color: rgb(189, 189, 189);
+}
+
+.search-ride label {
+    font-weight: bold;
+}
+
+.search-ride input[type='submit'] {
+    background-color: black;
+    font-weight: bold;
+    padding: 7px 15px;
+    color: white;
 }
 
 .search-ride input {
-    display: block
+    display: block;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: none;
 }
 
 .search-ride button {
@@ -28,4 +53,23 @@
 .search-result h3 {
     margin-left: 5px;
     margin-top: 5px;
+}
+
+.ride-details {
+    margin-left: 5px;
+    margin-top: 5px;
+    padding: 20px 10px;
+    box-shadow: 5px 5px 10px gray;
+    border: 1px solid gray;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ride-details p {
+    font-weight: bold;
+}
+
+.ride-details img {
+    width: 50px;
 }
