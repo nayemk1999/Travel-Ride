@@ -34,7 +34,7 @@ const Login = () => {
                         name: user.displayName,
                         email: user.email
                     }
-                    
+
                     setLoggedInUser(newUserInfo)
                     setNewUser(newUserInfo)
                     history.replace(from);

@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import { useParams } from 'react-router';
 import { UserContext } from '../../App';
 import { FakeData } from '../../fakeData/FakeData';
-import Map from '../../fakeData/images/Map.png'
 import './SearchRide.css'
+import GoogleMap from '../GoogleMap/Map'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserFriends } from '@fortawesome/free-solid-svg-icons'
 
 const SearchRide = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
@@ -14,7 +16,7 @@ const SearchRide = () => {
     const [search, setSearch] = useState(false);
     const [searchRoute, setSearchRoute] = useState({})
     const [rideDetails, setRideDetails] = useState({});
-    const {img, name, price, person} = rideDetails;
+    const { img, name, price, person } = rideDetails;
 
     const { register, handleSubmit, watch, errors } = useForm();
     const onSubmit = data => {
@@ -44,28 +46,28 @@ const SearchRide = () => {
                             <h3>{searchRoute.pickTo}</h3>
                         </div>
                         <div className='ride-details'>
-                            <img src={img} alt=""/>
+                            <img src={img} alt="" />
                             <p>{name}</p>
-                            <p>{person}</p>
+                            <p><FontAwesomeIcon icon={faUserFriends} /> {person}</p>
                             <p>${price}</p>
                         </div>
                         <div className='ride-details'>
-                            <img src={img} alt=""/>
+                            <img src={img} alt="" />
                             <p>{name}</p>
-                            <p>{person}</p>
+                            <p><FontAwesomeIcon icon={faUserFriends} /> {person}</p>
                             <p>${price}</p>
                         </div>
                         <div className='ride-details'>
-                            <img src={img} alt=""/>
+                            <img src={img} alt="" />
                             <p>{name}</p>
-                            <p>{person}</p>
+                            <p><FontAwesomeIcon icon={faUserFriends} /> {person}</p>
                             <p>${price}</p>
                         </div>
                     </div>
                 }
             </div>
             <div className="col map">
-                <img src={Map} alt="" />
+                 <GoogleMap></GoogleMap>
             </div>
 
         </div>
