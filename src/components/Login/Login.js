@@ -70,9 +70,16 @@ const Login = () => {
     };
 
     const gProvider = new firebase.auth.GoogleAuthProvider();
-    const googleSignIn = () => {
+    const gitProvider = new firebase.auth.GithubAuthProvider()
+    const googleSignIn = (props) => {
+        authSignIn(gProvider)
+    }
+    const githubSignIn = (props) => {
+        authSignIn(gitProvider)
+    }
+    const authSignIn = (props) => {
         firebase.auth()
-            .signInWithPopup(gProvider)
+            .signInWithPopup(props)
             .then(res => {
                 const user = res.user;
                 const newUserInfo = {
@@ -144,7 +151,7 @@ const Login = () => {
             {!login ? <button className="btn btn-warning" onClick={() => setLogin(!login)}>Login</button> : <button className="btn btn-warning" onClick={() => setLogin(!login)}>Create an Account</button>}
             <p>-------------Or--------------</p>
             <button onClick={googleSignIn} className="btn btn-warning">Continue With Google</button>
-            <button className="btn btn-warning">Continue With Facebook</button>
+            <button onClick ={githubSignIn} className="btn btn-warning">Continue With GitHub</button>
         </div>
     );
 };

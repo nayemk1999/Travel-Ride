@@ -6,13 +6,11 @@ import { FakeData } from '../../fakeData/FakeData';
 import './SearchRide.css'
 import GoogleMap from '../GoogleMap/Map'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserFriends } from '@fortawesome/free-solid-svg-icons'
+import { faUserFriends, faAngleDown,faAngleUp } from '@fortawesome/free-solid-svg-icons'
 
 const SearchRide = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     const { id } = useParams();
-
-
     const [search, setSearch] = useState(false);
     const [searchRoute, setSearchRoute] = useState({})
     const [rideDetails, setRideDetails] = useState({});
@@ -42,8 +40,8 @@ const SearchRide = () => {
                     :
                     <div className='search-ride'>
                         <div className="search-result">
-                            <h3>{searchRoute.pickFrom}</h3>
-                            <h3>{searchRoute.pickTo}</h3>
+                            <h3><FontAwesomeIcon icon={faAngleDown} /> {searchRoute.pickFrom}</h3>
+                            <h3><FontAwesomeIcon icon={faAngleUp} /> {searchRoute.pickTo}</h3>
                         </div>
                         <div className='ride-details'>
                             <img src={img} alt="" />
