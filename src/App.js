@@ -31,9 +31,9 @@ function App() {
           <PrivateRoute path="/search-ride/:id">
             <SearchRide />
           </PrivateRoute>
-          <Route path="/destination">
+          <PrivateRoute path="/destination">
             <Destination></Destination>
-          </Route>
+          </PrivateRoute>
           <Route exact path="/">
             <Home />
           </Route>
