@@ -179,7 +179,8 @@ const Login = () => {
                     <input className="form-control" name="password" id="password" ref={register({ required: true })} placeholder="Enter Your Password" /><br />
                     {errors.password && <span>This field is required</span>}
                     <br />
-                    <input type="checkbox" name="remember" id="" value="Remember Me" />
+                    <input className="form-check-input" type="checkbox" name="remember" id=""/>
+                    <label className ="form-check-label" for ='checkbox'>Remember Me</label>
                     <input type="submit" className="loginBtn" value="LogIn" />
                 </form>
 
