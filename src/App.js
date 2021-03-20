@@ -18,7 +18,7 @@ export const UserContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
   return (
-    <UserContext.Provider value = {[loggedInUser, setLoggedInUser]}>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>
         <Header />
         <Switch>
@@ -32,14 +32,14 @@ function App() {
             <SearchRide />
           </PrivateRoute>
           <PrivateRoute path="/destination">
-            <Destination></Destination>
+            <SearchRide />
           </PrivateRoute>
           <Route exact path="/">
             <Home />
           </Route>
         </Switch>
       </Router>
-      </UserContext.Provider>
+    </UserContext.Provider>
   );
 }
 
