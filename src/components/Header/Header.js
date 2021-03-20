@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../App';
 import './Header.css'
@@ -6,6 +7,7 @@ import './Header.css'
 const Header = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     return (
+
         <div className="container header">
             <div class="d-flex mb-3 mr-auto navbar-collapse">
                 <div class="mr-auto p-4 link">Travel Ride</div>

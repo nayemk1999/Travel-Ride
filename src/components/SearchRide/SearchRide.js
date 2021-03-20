@@ -6,7 +6,7 @@ import { FakeData } from '../../fakeData/FakeData';
 import './SearchRide.css'
 import GoogleMap from '../GoogleMap/Map'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserFriends, faAngleDown,faAngleUp } from '@fortawesome/free-solid-svg-icons'
+import { faUserFriends, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
 
 const SearchRide = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
@@ -25,49 +25,50 @@ const SearchRide = () => {
     };
 
     return (
-        <div className="container row rideContain">
-            <div className="col">
-                {!search ?
-                    <form className='search-ride' onSubmit={handleSubmit(onSubmit)}>
-                        <label>Pick From</label>
-                        <input name="pickFrom" ref={register({ required: true })} />
-                        {errors.pickFrom && <span>This field is required</span>}
-                        <label>Pick To</label>
-                        <input name="pickTo" ref={register({ required: true })} />
-                        {errors.pickTo && <span>This field is required</span>}
-                        <input type="submit" />
-                    </form>
-                    :
-                    <div className='search-ride'>
-                        <div className="search-result">
-                            <h3><FontAwesomeIcon icon={faAngleDown} /> {searchRoute.pickFrom}</h3>
-                            <h3><FontAwesomeIcon icon={faAngleUp} /> {searchRoute.pickTo}</h3>
+        <div className="container rideContain">
+            <div className="row">
+                <div className="col-md-6">
+                    {!search ?
+                        <form className='search-ride' onSubmit={handleSubmit(onSubmit)}>
+                            <label>Pick From</label>
+                            <input name="pickFrom" ref={register({ required: true })} />
+                            {errors.pickFrom && <span>This field is required</span>}
+                            <label>Pick To</label>
+                            <input name="pickTo" ref={register({ required: true })} />
+                            {errors.pickTo && <span>This field is required</span>}
+                            <input type="submit" />
+                        </form>
+                        :
+                        <div className='search-ride'>
+                            <div className="search-result">
+                                <h3><FontAwesomeIcon icon={faAngleDown} /> {searchRoute.pickFrom}</h3>
+                                <h3><FontAwesomeIcon icon={faAngleUp} /> {searchRoute.pickTo}</h3>
+                            </div>
+                            <div className='ride-details'>
+                                <img src={img} alt="" />
+                                <p>{name}</p>
+                                <p><FontAwesomeIcon icon={faUserFriends} /> {person}</p>
+                                <p>${price}</p>
+                            </div>
+                            <div className='ride-details'>
+                                <img src={img} alt="" />
+                                <p>{name}</p>
+                                <p><FontAwesomeIcon icon={faUserFriends} /> {person}</p>
+                                <p>${price}</p>
+                            </div>
+                            <div className='ride-details'>
+                                <img src={img} alt="" />
+                                <p>{name}</p>
+                                <p><FontAwesomeIcon icon={faUserFriends} /> {person}</p>
+                                <p>${price}</p>
+                            </div>
                         </div>
-                        <div className='ride-details'>
-                            <img src={img} alt="" />
-                            <p>{name}</p>
-                            <p><FontAwesomeIcon icon={faUserFriends} /> {person}</p>
-                            <p>${price}</p>
-                        </div>
-                        <div className='ride-details'>
-                            <img src={img} alt="" />
-                            <p>{name}</p>
-                            <p><FontAwesomeIcon icon={faUserFriends} /> {person}</p>
-                            <p>${price}</p>
-                        </div>
-                        <div className='ride-details'>
-                            <img src={img} alt="" />
-                            <p>{name}</p>
-                            <p><FontAwesomeIcon icon={faUserFriends} /> {person}</p>
-                            <p>${price}</p>
-                        </div>
-                    </div>
-                }
+                    }
+                </div>
+                <div className="col-md-6 map">
+                    <GoogleMap></GoogleMap>
+                </div>
             </div>
-            <div className="col map">
-                 <GoogleMap></GoogleMap>
-            </div>
-
         </div>
     );
 };
