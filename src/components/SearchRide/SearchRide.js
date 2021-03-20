@@ -7,6 +7,7 @@ import './SearchRide.css'
 import GoogleMap from '../GoogleMap/Map'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserFriends, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
+import Header from '../Header/Header';
 
 const SearchRide = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
@@ -25,9 +26,10 @@ const SearchRide = () => {
     };
 
     return (
-        <div className="container rideContain">
-            <div className="row">
-                <div className="col-md-6">
+        <div className="container">
+            <Header></Header>
+            <div className="row search-container">
+                <div className="col-md-6 pt-3">
                     {!search ?
                         <form className='search-ride' onSubmit={handleSubmit(onSubmit)}>
                             <label>Pick From</label>
@@ -65,7 +67,7 @@ const SearchRide = () => {
                         </div>
                     }
                 </div>
-                <div className="col-md-6 map">
+                <div className="col-md-6 pt-3 map">
                     <GoogleMap></GoogleMap>
                 </div>
             </div>

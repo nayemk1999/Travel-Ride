@@ -2,6 +2,11 @@
     height: 400px;
 }
 
+.search-container {
+    margin: 0 auto;
+    padding: 10px 40px 0px 40px;
+}
+
 .search-ride {
     border: 1px solid grey;
     padding: 30px;

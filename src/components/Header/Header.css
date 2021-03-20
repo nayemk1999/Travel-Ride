@@ -1,23 +1,27 @@
-.header .link {
+.link {
     font-weight: bold !important;
     font-size: 20px;
     text-decoration: none !important;
+    color: black
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .link:hover {
     text-decoration: none !important;
+    color: red
 }
 
 .log-link {
     text-decoration: none !important;
     font-weight: bold !important;
-    font-size: 25px;
-    background-color: rgb(240, 129, 26);
+    font-size: 20px;
+    background-color: black;
     padding: 5px 25px;
     border-radius: 5px;
     color: white;
-}
-
-.header {
-    /* background-color: teal; */
 }

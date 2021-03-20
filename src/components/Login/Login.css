@@ -5,6 +5,23 @@
     width: 500px;
 }
 
+@media only screen and (max-width: 600px) {
+    .login-form {
+        margin: 0 auto;
+        /* padding: 30px; */
+        border: 1px solid gray;
+        width: 100%;
+    }
+    .login-form h2 {
+        font-size: 20px;
+        font-weight: bold;
+    }
+}
+
+.login-form h2 {
+    color: #bf1650;
+}
+
 .login-form span,
 p {
     color: #bf1650;
@@ -23,8 +40,8 @@ p {
 }
 
 .loginBtn {
-    margin-top: 5px;
-    background-color: rgb(245, 137, 37);
+    margin: 0 auto;
+    background-color: black;
     border: none;
     border-radius: 5px;
     color: white;
@@ -34,7 +51,6 @@ p {
 
 .authLoginBtn {
     margin: 0 auto;
-    /* background-color: rgb(245, 137, 37); */
     border: none;
     border-radius: 5px;
     color: black;
@@ -42,4 +58,9 @@ p {
     display: block;
     font-weight: bold;
     margin-bottom: 10px;
+}
+
+.authLoginBtn:hover {
+    background-color: black;
+    color: white;
 }
